@@ -1,12 +1,13 @@
 // Syntax
 $pr = '';
-$syml = $pr.replace(/[\d\., ]/g,'').trim();
+$syml = $pr.replace(/[\d\., \w]/g,'').trim();
 switch($syml){
     case '$' : $cr = jQuery('[itemprop="priceCurrency"]').length > 0 ? 
                      jQuery('[itemprop="priceCurrency"]').attr('content').trim() : '';
                if($cr.length > 0 && $cr == 'USD'){
                     $pr;
-               }else if($cr.length > 0 && $cr != 'USD'){
+               }
+               else if($cr.length > 0 && $cr != 'USD'){
                     $pr = $pr.slice(1,$pr.length).trim();
                     $pr = $pr.indexOf($cr) == -1 ? $cr+$pr : $pr;
                }
